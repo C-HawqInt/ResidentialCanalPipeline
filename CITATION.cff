@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Residential Canal Pipeline: ArcGIS Pro tools for mapping Florida's artificial residential waterways"
+authors:
+  - family-names: Hewitt
+    given-names: Nathan
+    affiliation: "Coastal Habitat and Water Quality Initiative (C-HAWQ)"
+repository-code: "https://github.com/C-HawqInt/ResidentialCanalPipeline"
+license: MIT
+version: "1.0.0"
+date-released: "2026-10-27"
+keywords:
+  - residential canals
+  - artificial waterways
+  - Florida
+  - GIS
+  - National Hydrography Dataset
+  - ArcGIS Pro

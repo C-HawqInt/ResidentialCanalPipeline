@@ -1,0 +1,48 @@
+# ---- ArcGIS Pro ----
+*.pyt.xml
+*.aprx
+*.atbx
+*.lock
+*.sr.lock
+GpMessages/
+ImportLog/
+Index/
+.backups/
+RasterFunctionTemplates/
+
+# ---- Spatial data (download from the sources in docs/DATA_SOURCES.md) ----
+*.gdb/
+*.gpkg
+*.shp
+*.shx
+*.dbf
+*.prj
+*.cpg
+*.sbn
+*.sbx
+*.shp.xml
+*.tif
+*.tfw
+*.tif.aux.xml
+*.ovr
+*.zip
+data/
+outputs/
+
+# ---- R ----
+.Rhistory
+.RData
+.Rproj.user/
+canal_analysis_outputs*/
+
+# ---- Python ----
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# ---- OS / editors ----
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
