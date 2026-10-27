@@ -30,6 +30,9 @@ Cite each dataset you use. The entries below follow APA 7; check each provider's
 - U.S. Geological Survey. (2022). *NHDPlus High Resolution (NHDPlus HR) National Release 1* [Data set]. <https://doi.org/10.5066/P9WFOBQI>
 - University of Florida GeoPlan Center. (2025). *Land use and cover (FLUCCS Level 3) by water management district in Florida 2019–2023* (Ed. July 2025) [Data set]. Florida Geographic Data Library. Retrieved May 2026, from <https://www.fgdl.org/>
 - U.S. Geological Survey. (2024). *USGS National Hydrography Dataset Best Resolution (NHD) – Florida (published 20240116) shapefile* [Data set]. Retrieved May 2026, from <https://www.usgs.gov/national-hydrography/national-hydrography-dataset>
+- Florida Department of Environmental Protection. (2025). *Statewide Land Use Land Cover* [Data set]. Retrieved May 2026, from <https://geodata.dep.state.fl.us/datasets/FDEP::statewide-land-use-land-cover/about>
+- U.S. Geological Survey. (n.d.). *National Hydrography Dataset (NHD), Florida state extract* [Data set]. Retrieved May 2026, from <https://geodata.dep.state.fl.us/datasets/69bb0b2544dd4551942e96800802441c_10/explore?location=28.037850%2C-83.910500%2C5>
+- South Florida Water Management District. (n.d.). *Water management district boundaries* [Data set]. Florida Department of Environmental Protection, MapDirect. Retrieved May 2026, from <https://mapdirect-fdep.opendata.arcgis.com/datasets/sfwmd::water-management-district-boundaries/about>
 
 ## Terms of use
 

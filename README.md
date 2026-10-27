@@ -4,7 +4,7 @@
 
 ArcGIS Pro tools that map artificial residential waterways (ARWs) across Florida: dredged canals and basins fronted by residential property that are large enough to hold a boat and connect by water to a natural water body. The pipeline pulls canal features from public hydrography and land-cover data, keeps those fronted by residential parcels, converts them to polygons, and merges the sources into one statewide candidate layer for manual review.
 
-Developed by the Coastal Habitat and Water Quality Initiative (C-HAWQ), a Florida nonprofit. The code supports the manuscript *[manuscript title and citation to add on publication]*.
+Developed by the Coastal Habitat and Water Quality Initiative (C-HAWQ), a Florida nonprofit. The code supports a manuscript that is currently being finalized.
 
 ## Workflow
 
