@@ -22,6 +22,7 @@
 #   7. Canal size by Water Management District
 #   8. Distance from the mouth by Water Management District        (new)
 #   9. Size, shoreline and distance by canal form (TYP_FORM)        (new)
+#  10. Canal form vs. district vs. size: linear models of distance  (new)
 #
 # HOW TO RUN (RStudio)
 #   1. install.packages(c("sf", "dplyr", "tidyr", "readr", "stringr"))   # once
@@ -618,6 +619,67 @@ results$`9_by_form` <- by_form
 results$`9_form_x_WMD` <- form_x_wmd
 results$`9_form_tests` <- form_tests
 results$`9_form_pairwise` <- form_pw
+
+
+# ---- 10. Canal form vs. district vs. size -------------------------------------
+# Is the canal-form difference in distance (section 9) explained by district or by
+# size? Linear models on log10 mean distance (polygons), with Type II style F tests
+# (drop1) and partial eta-squared for each term. Ratios are back-transformed
+# coefficients: 2.0 means twice the distance of single-channel canals.
+mod_df <- form_df %>%
+  filter(!is.na(DIST_MEAN)) %>%
+  mutate(TYP_FORM = factor(as.character(TYP_FORM), levels = form_levels),
+         WMDNAME  = factor(WMDNAME, levels = c("SFWMD", "SWFWMD", "SJRWMD", "NWFWMD", "SRWMD")),
+         log_dist = log10(DIST_MEAN), log_area = log10(area_m2_calc))
+models <- list(
+  district_only       = lm(log_dist ~ WMDNAME, mod_df),
+  form_only           = lm(log_dist ~ TYP_FORM, mod_df),
+  area_only           = lm(log_dist ~ log_area, mod_df),
+  form_district       = lm(log_dist ~ TYP_FORM + WMDNAME, mod_df),
+  form_x_district     = lm(log_dist ~ TYP_FORM * WMDNAME, mod_df),
+  form_district_area  = lm(log_dist ~ TYP_FORM + WMDNAME + log_area, mod_df))
+model_fit <- tibble(model = names(models),
+                    r_squared = sapply(models, function(m) summary(m)$r.squared),
+                    adj_r_squared = sapply(models, function(m) summary(m)$adj.r.squared),
+                    AIC = sapply(models, AIC))
+term_tests <- function(m, label) {
+  a <- drop1(m, test = "F")[-1, ]
+  tibble(model = label, term = rownames(a), df = a$Df, F = a$`F value`, p_value = a$`Pr(>F)`,
+         partial_eta_sq = a$`Sum of Sq` / (a$`Sum of Sq` + deviance(m)))
+}
+interaction_test <- anova(models$form_district, models$form_x_district)
+model_terms <- bind_rows(
+  term_tests(models$form_district, "form + district"),
+  term_tests(models$form_district_area, "form + district + log area"),
+  tibble(model = "form x district vs. form + district", term = "TYP_FORM:WMDNAME",
+         df = interaction_test$Df[2], F = interaction_test$F[2], p_value = interaction_test$`Pr(>F)`[2],
+         partial_eta_sq = NA_real_))
+form_ratio <- function(m, label) {
+  ci <- confint(m); rows <- grep("^TYP_FORM", names(coef(m)))
+  tibble(model = label, form = sub("^TYP_FORM", "", names(coef(m))[rows]),
+         ratio_vs_single_channel = 10^coef(m)[rows],
+         ci_low = 10^ci[rows, 1], ci_high = 10^ci[rows, 2])
+}
+form_ratios <- bind_rows(form_ratio(models$form_district, "form + district"),
+                         form_ratio(models$form_district_area, "form + district + log area"))
+within_district <- mod_df %>% group_by(WMDNAME) %>%
+  group_modify(~ {
+    k <- kruskal.test(DIST_MEAN ~ droplevels(TYP_FORM), data = .x)
+    meds <- tapply(.x$DIST_MEAN, droplevels(.x$TYP_FORM), median)
+    tibble(n = nrow(.x), H = unname(k$statistic), p_value = k$p.value,
+           epsilon_sq = unname(k$statistic) / (nrow(.x) - 1),
+           median_single_m = meds["Single channel"], median_finger_m = meds["Finger"],
+           median_branching_m = meds["Branching/Dendritic"], median_open_basin_m = meds["Open basin"])
+  }) %>% ungroup()
+show(mutate(model_fit, across(where(is.double), ~ round(.x, 3))), "10a. Model fit (log10 mean distance, polygons)")
+show(mutate(model_terms, across(where(is.double), ~ signif(.x, 3))), "10b. Term tests and partial eta-squared")
+show(mutate(form_ratios, across(where(is.double), ~ round(.x, 2))), "10c. Distance ratio vs. single-channel canals")
+show(mutate(within_district, across(where(is.double), ~ signif(.x, 3))), "10d. Canal form within each district (Kruskal-Wallis)")
+cat("Note: residuals are spatially clustered; treat p-values as optimistic.\n")
+results$`10_model_fit` <- model_fit
+results$`10_model_terms` <- model_terms
+results$`10_form_ratios` <- form_ratios
+results$`10_form_within_district` <- within_district
 
 # ---- Optional spot check -----------------------------------------------------
 if (!is.null(spot_check_name)) {

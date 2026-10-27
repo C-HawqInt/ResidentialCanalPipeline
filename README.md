@@ -1,5 +1,7 @@
 # Residential Canal Pipeline
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23700657.svg)](https://doi.org/10.5281/zenodo.23700657)
+
 ArcGIS Pro tools that map artificial residential waterways (ARWs) across Florida: dredged canals and basins fronted by residential property that are large enough to hold a boat and connect by water to a natural water body. The pipeline pulls canal features from public hydrography and land-cover data, keeps those fronted by residential parcels, converts them to polygons, and merges the sources into one statewide candidate layer for manual review.
 
 Developed by the Coastal Habitat and Water Quality Initiative (C-HAWQ), a Florida nonprofit. The code supports the manuscript *[manuscript title and citation to add on publication]*.
@@ -43,7 +45,7 @@ ResidentialCanalPipeline/
 
 ## Requirements
 
-- ArcGIS Pro 3.x with an Advanced license (tested on 3.0.3 and 3.5.3). The Distance Accumulation step in post-processing also needs Spatial Analyst.
+- ArcGIS Pro 3.x with an Advanced license (tested on 3.5). The Distance Accumulation step in post-processing also needs Spatial Analyst.
 - Python packages bundled with ArcGIS Pro: `arcpy`, `requests`, `numpy`, `scipy`, `matplotlib`.
 - For the analysis scripts: R 4.5 or later with `sf`, `dplyr`, `tidyr`, `readr`, `stringr`, `ggplot2` and `scales` (optional: `writexl`, `lwgeom`).
 - Internet access for the USGS and Florida Geographic Information Office REST services.
@@ -71,7 +73,11 @@ No data are included. See [docs/DATA_SOURCES.md](docs/DATA_SOURCES.md) for every
 
 ## Citing
 
-If you use this code, cite the software (see `CITATION.cff`) and the manuscript once published.
+If you use this code, please cite it:
+
+> Hewitt, N. (2026). *Residential Canal Pipeline: ArcGIS Pro tools for mapping Florida's artificial residential waterways* (Version 1.0.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.23700657
+
+Please also cite the manuscript once published, and credit the data providers listed in [docs/DATA_SOURCES.md](docs/DATA_SOURCES.md).
 
 ## License
 

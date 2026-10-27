@@ -32,7 +32,7 @@ The statewide run behind the manuscript (May 2026) did not use every tool defaul
 
 Filtering was tuned through the residential coverage thresholds, minimum areas and buffers above; the geometric filters (compactness, maximum width) were left at their defaults.
 
-Software: ArcGIS Pro 3.0.3 and 3.5.3 (Advanced license, Spatial Analyst).
+Software: ArcGIS Pro 3.5 (Advanced license, Spatial Analyst).
 
 ## Post-processing
 
