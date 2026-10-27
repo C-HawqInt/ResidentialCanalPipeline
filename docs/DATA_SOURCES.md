@@ -22,10 +22,11 @@ No data are stored in this repository. Every input is public, and each source sh
 
 ## Citations
 
-- Florida Department of Revenue, Property Tax Oversight Program. (2026). *Florida statewide parcels*. Florida Geographic Information Office. Accessed May, 2026 at <https://geodata.floridagio.gov/search?q=parcels>.
-- U.S. Geological Survey. (2022). *USGS National Hydrography Dataset Plus High Resolution National Release 1 FileGDB: U.S. Geological Survey*. Accessed May, 2026 at <https://doi.org/10.5066/P9WFOBQI>.
-- Florida Department of Environmental Protection. (2025). *Statewide Land Use Land Cover*. Accessed May, 2026 at <https://geodata.dep.state.fl.us/datasets/FDEP::statewide-land-use-land-cover/about>.
-- U.S. Geological Survey. *National Hydrography Dataset (NHD), Florida state extract*. Accessed May, 2026 at <https://geodata.dep.state.fl.us/datasets/69bb0b2544dd4551942e96800802441c_10/explore?location=28.037850%2C-83.910500%2C5>. 
+- Florida Department of Revenue, Property Tax Oversight Program. (2026). *Florida statewide parcels* [Dataset]. Florida Geographic Information Office. Accessed May, 2026 at <https://geodata.floridagio.gov/search?q=parcels>.
+- U.S. Geological Survey. (2022). *USGS National Hydrography Dataset Plus High Resolution National Release 1 FileGDB: U.S. Geological Survey* [Dataset]. Accessed May, 2026 at <https://doi.org/10.5066/P9WFOBQI>.
+- Florida Department of Environmental Protection. (2025). *Statewide Land Use Land Cover* [Dataset]. Accessed May, 2026 at <https://geodata.dep.state.fl.us/datasets/FDEP::statewide-land-use-land-cover/about>.
+- U.S. Geological Survey. *National Hydrography Dataset (NHD), Florida state extract* [Dataset]. Accessed May, 2026 at <https://geodata.dep.state.fl.us/datasets/69bb0b2544dd4551942e96800802441c_10/explore?location=28.037850%2C-83.910500%2C5>. 
+- South Florida Water Management District. (n.d.). *Water management district boundaries* [Dataset]. Florida Department of Environmental Protection, MapDirect. Accessed May, 2026 at <https://mapdirect-fdep.opendata.arcgis.com/datasets/sfwmd::water-management-district-boundaries/about>
 
 ## Terms of use
 
