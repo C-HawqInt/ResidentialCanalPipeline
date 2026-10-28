@@ -80,7 +80,7 @@ The published layer of 3,129 artificial residential waterway polygons, with cent
 
 If you use this code, please cite it:
 
-> Hewitt, N. (2026). *Residential Canal Pipeline: ArcGIS Pro tools for mapping Florida's artificial residential waterways* (Version 1.0.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.23700657
+> Coastal Habitat and Water Quality Initiative (C-HAWQ), & Hewitt, N. (2026). Artificial residential waterways (ARWs) of Florida (Version 1.0.0) [Dataset]. Zenodo. https://doi.org/10.5281/zenodo.23705086
 
 Please also cite the manuscript once published, and credit the data providers listed in [docs/DATA_SOURCES.md](docs/DATA_SOURCES.md).
 
