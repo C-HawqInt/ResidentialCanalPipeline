@@ -32,9 +32,11 @@ ResidentialCanalPipeline/
 │   ├── centerlines/
 │   │   ├── CHAWQ_Canal_Centerline_Tools.pyt   Medial-axis centerlines, length summaries, zonal statistics
 │   │   └── centerline_sensitivity.py        Sensitivity of centerline length to the tool settings
-│   └── distance/
-│       ├── CanalDistanceRasters.pyt          Per-canal in-water distance-from-mouth rasters
-│       └── canal_distance_core.py            Processing functions called by that toolbox
+│   ├── distance/
+│   │   ├── CanalDistanceRasters.pyt          Per-canal in-water distance-from-mouth rasters
+│   │   └── canal_distance_core.py            Processing functions called by that toolbox
+│   └── release/
+│       └── export_data_release.py            Builds the public data release (GeoPackage, CSV, data dictionary)
 ├── analysis/
 │   ├── chawq_residential_canal_analysis_v2.R   Footprint, distance and canal-form statistics
 │   └── chawq_canal_figures_v2.R                Figures and summary tables
@@ -65,11 +67,14 @@ All processing is done in NAD83(2011) Florida GDL Albers (EPSG:6439), an equal-a
 - **Centerlines.** `postprocessing/centerlines/CHAWQ_Canal_Centerline_Tools.pyt`, tool *Polygons to Centerlines*. Boundary points every 3 m, medial axis from the Voronoi diagram of those points, side branches pruned below 1.5 times the local half-width or 5 m, lines simplified to 0.5 m, dead ends extended to the canal terminus. The geometry functions use only `numpy` and `scipy`, so they can be tested outside ArcGIS.
 - **Centerline sensitivity.** `postprocessing/centerlines/centerline_sensitivity.py` reruns the centerline geometry outside ArcGIS with alternative point spacing and pruning settings and reports the change in total length.
 - **Distance from the mouth.** `postprocessing/distance/CanalDistanceRasters.pyt` builds one cost-distance raster per canal system with Spatial Analyst Distance Accumulation (1 m cells; water cost 1, land impassable), starting from hand-drawn mouth lines. Mouth cells are grown onto water by one cell, or up to the 3 m touch tolerance if needed, so every run starts inside the canal. Keep `canal_distance_core.py` beside the toolbox. Rasters are then summarized per polygon with the *Zonal Stats from County Rasters* tool.
+- **Data release.** `postprocessing/release/export_data_release.py` (geopandas, no ArcGIS needed) writes the published polygons, centerlines and mouth lines to one GeoPackage with a CSV attribute table and data dictionary.
 - **Statistics and figures.** Edit `ms_dir` at the top of each R script (or set the `CHAWQ_MS_DIR` environment variable) to point at your data folder, then run the analysis script before the figures script.
 
 ## Data
 
 No data are included. See [docs/DATA_SOURCES.md](docs/DATA_SOURCES.md) for every source, its download link and its citation. Please credit the data providers in any work that uses this code.
+
+The published layer of 3,129 artificial residential waterway polygons, with centerlines, mouth lines and per-canal distance statistics, is archived separately: Coastal Habitat and Water Quality Initiative, & Hewitt, N. (2026). *Artificial residential waterways (ARWs) of Florida* (Version 1.0.0) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.23705086
 
 ## Citing
 
